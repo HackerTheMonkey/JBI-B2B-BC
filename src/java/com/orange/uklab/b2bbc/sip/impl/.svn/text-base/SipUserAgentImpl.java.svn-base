@@ -1,0 +1,97 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package com.orange.uklab.b2bbc.sip.impl;
+import com.orange.uklab.b2bbc.descriptor.ServiceUnit;
+import com.orange.uklab.b2bbc.descriptor.impl.ServiceEndpointImpl;
+import com.orange.uklab.b2bbc.nmr.NmrAgent;
+import com.orange.uklab.b2bbc.nmr.impl.NmrAgentImpl;
+import com.orange.uklab.b2bbc.runtime.contexts.RuntimeComponentContext;
+import com.orange.uklab.b2bbc.sip.SipUserAgent;
+import com.orange.uklab.b2bbc.wsdlparsing.impl.MessageTransformer;
+import gov.nist.javax.sip.SipProviderImpl;
+import gov.nist.javax.sip.message.SIPRequest;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.jbi.servicedesc.ServiceEndpoint;
+import javax.sip.SipException;
+import javax.sip.message.Request;
+import javax.sip.message.Response;
+import javax.xml.transform.Source;
+
+/**
+ *
+ * @author hasanein
+ */
+public class SipUserAgentImpl implements SipUserAgent
+{
+    private NmrAgent nmrAgent = null;
+    private Logger logger = null;
+    private MessageTransformer messageTransformer = null;
+
+    public SipUserAgentImpl()
+    {
+        initLogger();
+        this.nmrAgent = new NmrAgentImpl();
+        this.messageTransformer = new MessageTransformer();
+    }    
+
+    private void initLogger()
+    {
+        this.logger = RuntimeComponentContext.getInstance().getLogger(this.getClass().getName(), null);
+    }
+    
+    @Override
+    public void receiveRequest(Request request, ServiceUnit serviceUnit)
+    {
+        logger.info("Request Received: " + request.getMethod());
+        logger.info("Normalizing the Request Message...");
+        Source normalizedMessage = messageTransformer.normalizeSipMessage((SIPRequest) request);
+        logger.info("Sending the received normalized request to the NMR agent...");
+        ServiceEndpoint[] serviceEndpoints = serviceUnit.getServiceEndpoints();
+        for(ServiceEndpoint s : serviceEndpoints)
+        {
+            ServiceEndpointImpl sep = (ServiceEndpointImpl) s;
+            if(sep.getEndpointType().equals(ServiceEndpointImpl.ENDPOINT_TYPE_CONSUME))
+            {
+                nmrAgent.sendNormalizedMessage(normalizedMessage, sep);
+                break;
+            }
+        }
+    }
+
+    @Override
+    public void sendResponse(Response response, ServiceUnit serviceUnit)
+    {
+        /**
+         * Get the provider registered for the ServiceUnit
+         */
+        SipProviderImpl sipProvider = (SipProviderImpl) RuntimeComponentContext.getInstance().getSipProvider(serviceUnit.getName());
+        logger.info("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+        logger.info("Sending Response to: " + response.getReasonPhrase());
+        logger.info("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+        try
+        {
+            sipProvider.sendResponse(response);
+        }
+        catch (SipException ex)
+        {
+            Logger.getLogger(SipUserAgentImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void receiveResponse(Response response, ServiceUnit serviceUnit)
+    {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void sendRequest(Response response, ServiceUnit serviceUnit)
+    {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+}

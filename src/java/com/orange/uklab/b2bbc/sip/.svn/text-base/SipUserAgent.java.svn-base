@@ -1,0 +1,26 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package com.orange.uklab.b2bbc.sip;
+import com.orange.uklab.b2bbc.descriptor.ServiceUnit;
+import javax.sip.message.Request;
+import javax.sip.message.Response;
+
+/**
+ * Processing Requests and generating responses.
+ * @author hasanein
+ */
+public interface SipUserAgent
+{
+    /**
+     * This method is used to receive and process the incoming SIP
+     * messages received via SIP native interface through the SIP stack.
+     * @param sipRequest
+     */
+    public void receiveRequest(Request request, ServiceUnit serviceUnit);
+    public void receiveResponse(Response response, ServiceUnit serviceUnit);
+    public void sendResponse(Response response, ServiceUnit serviceUnit);
+    public void sendRequest(Response response, ServiceUnit serviceUnit);
+}

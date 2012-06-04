@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/MySourceCodes/!svn/ver/98/Projects/OrangeProjects/B2B-BC/src/java/com/orange/uklab/b2bbc/descriptor
+END
+ServiceAssembly.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/MySourceCodes/!svn/ver/96/Projects/OrangeProjects/B2B-BC/src/java/com/orange/uklab/b2bbc/descriptor/ServiceAssembly.java
+END
+ServiceUnit.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/MySourceCodes/!svn/ver/99/Projects/OrangeProjects/B2B-BC/src/java/com/orange/uklab/b2bbc/descriptor/ServiceUnit.java
+END
+Component.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/MySourceCodes/!svn/ver/96/Projects/OrangeProjects/B2B-BC/src/java/com/orange/uklab/b2bbc/descriptor/Component.java
+END
+ParsingException.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/MySourceCodes/!svn/ver/99/Projects/OrangeProjects/B2B-BC/src/java/com/orange/uklab/b2bbc/descriptor/ParsingException.java
+END
+AbstractServiceEndpoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/MySourceCodes/!svn/ver/98/Projects/OrangeProjects/B2B-BC/src/java/com/orange/uklab/b2bbc/descriptor/AbstractServiceEndpoint.java
+END
+DescriptorObject.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/MySourceCodes/!svn/ver/97/Projects/OrangeProjects/B2B-BC/src/java/com/orange/uklab/b2bbc/descriptor/DescriptorObject.java
+END
+AbstractJbiDescriptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/MySourceCodes/!svn/ver/99/Projects/OrangeProjects/B2B-BC/src/java/com/orange/uklab/b2bbc/descriptor/AbstractJbiDescriptor.java
+END
+BindingException.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/MySourceCodes/!svn/ver/99/Projects/OrangeProjects/B2B-BC/src/java/com/orange/uklab/b2bbc/descriptor/BindingException.java
+END
+SharedLibrary.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/MySourceCodes/!svn/ver/96/Projects/OrangeProjects/B2B-BC/src/java/com/orange/uklab/b2bbc/descriptor/SharedLibrary.java
+END

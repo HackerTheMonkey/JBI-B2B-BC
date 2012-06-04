@@ -1,0 +1,204 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package com.orange.uklab.b2bbc.sip.impl;
+import com.orange.uklab.b2bbc.descriptor.ServiceUnit;
+import com.orange.uklab.b2bbc.runtime.contexts.RuntimeComponentContext;
+import com.orange.uklab.b2bbc.sip.SipDirector;
+import com.orange.uklab.b2bbc.sip.NativeSipReceiver;
+import com.orange.uklab.b2bbc.sip.WsdlSipReceiver;
+import com.orange.uklab.b2bbc.sip.messageprocessing.SipRequestsEnum;
+import com.orange.uklab.b2bbc.sip.messageprocessing.impl.InviteProcessorImpl;
+import com.orange.uklab.b2bbc.wsdlparsing.impl.MessageTransformer;
+import gov.nist.javax.sip.address.SipUri;
+import gov.nist.javax.sip.message.SIPRequest;
+import gov.nist.javax.sip.message.SIPResponse;
+import java.util.logging.Logger;
+import javax.sip.DialogTerminatedEvent;
+import javax.sip.IOExceptionEvent;
+import javax.sip.RequestEvent;
+import javax.sip.ResponseEvent;
+import javax.sip.TimeoutEvent;
+import javax.sip.TransactionTerminatedEvent;
+import javax.sip.message.Request;
+
+/**
+ *
+ * @author hasanein
+ */
+public class SipDirectorImpl implements SipDirector, NativeSipReceiver, WsdlSipReceiver
+{
+    private SipMessageDispatcherImpl sipMessageDispatcher = null;
+    private MessageTransformer messageTransformer = null;
+    private Logger logger = null;    
+
+    public SipDirectorImpl()
+    {
+        initLogger();
+        this.sipMessageDispatcher = new SipMessageDispatcherImpl();
+        this.messageTransformer = new MessageTransformer();
+    }
+
+    private void initLogger()
+    {
+        logger = RuntimeComponentContext.getInstance().getLogger(this.getClass().getName(), null);
+    }
+
+    @Override
+    public void receiveEvent(DialogTerminatedEvent dialogTerminatedEvent)
+    {
+        logger.info("receiveEvent: receiving event,  DialogTerminatedEvent: " + dialogTerminatedEvent.toString());
+    }
+
+    @Override
+    public void receiveEvent(IOExceptionEvent iOExceptionEvent)
+    {
+        logger.info("receiveEvent: receiving event, IOExceptionEvent: " + iOExceptionEvent.toString());
+    }
+
+    @Override
+    public void receiveEvent(RequestEvent requestEvent)
+    {
+        if(initiateGenericProcessing(requestEvent))
+        {
+            if(initiateMethodSpecifcProcessing(requestEvent))
+            {
+                Request request = requestEvent.getRequest();
+                logger.info("Sending the received request to the SipMessageDispatcher");
+                SipUri sipRequestUri = (SipUri) request.getRequestURI();
+                ServiceUnit serviceUnit = RuntimeComponentContext.getInstance().getServiceUnit(sipRequestUri.getPort());
+                sipMessageDispatcher.receiveRequest(request, serviceUnit);
+            }
+        }                
+    }
+
+    /**
+     * 
+     * @param requestEvent
+     */
+    public boolean initiateGenericProcessing(RequestEvent requestEvent)
+    {
+        logger.info("receiveEvent: receiving event, RequestEvent: Method:  " + requestEvent.getRequest().getMethod());
+        boolean requestValidationOutcome = validateIncomingRequest(requestEvent);
+        if(requestValidationOutcome)
+        {
+            logger.info("Method validation Completed Sucessfully");
+        }
+        else
+        {
+            logger.info("Method validation Completed with errors");
+        }
+        /**
+         * This method will return TRUE if the processing outcome did not
+         * resulted in a response to be sent back to the requestor, otherwise
+         * it returns FALSE;
+         */
+        return true;
+    }
+
+    public boolean initiateMethodSpecifcProcessing(RequestEvent requestEvent)
+    {
+        String requestMethod = requestEvent.getRequest().getMethod();
+        switch(SipRequestsEnum.valueOf(requestMethod))
+        {
+            case INVITE:
+                InviteProcessorImpl inviteProcessor = new InviteProcessorImpl();
+                return inviteProcessor.processIncomingInvite(requestEvent);                
+            case REGISTER:
+                break;
+            case INFO:
+                break;
+            case OPTIONS:
+                break;
+            case BYE:
+                break;
+            case CANCEL:
+                break;
+        }
+        return true;
+    }
+
+
+    @Override
+    public void receiveEvent(ResponseEvent responseEvent)
+    {
+        logger.info("receiveEvent: receiving event, ResponseEvent: Response Phrase:  " + responseEvent.getResponse().getReasonPhrase());
+    }
+
+    @Override
+    public void receiveEvent(TimeoutEvent timeoutEvent)
+    {
+        logger.info("receiveEvent: receiving event, TimeoutEvent: " + timeoutEvent.toString());
+    }
+
+    @Override
+    public void receiveEvent(TransactionTerminatedEvent transactionTerminatedEvent)
+    {
+        logger.info("receiveEvent: receiving event, TimeoTransactionTerminatedEventtEvent: " + transactionTerminatedEvent.toString());
+    }
+
+    /**
+     * This is an atomic method that will be used by the Director to validate
+     * the incoming messages it receives via the Receiver interface. If the
+     * message is validated positively, then state changes and further processing
+     * would occur, otherwise the message should be rejected appropriately and
+     * no state changes to be performed.
+     * This check is to be conducted whether or not the received request is
+     * inside or outside a dialog and regardless of the request method.
+     * @param requestEvent
+     * @return the outcome of the validation operation
+     */  
+    public boolean validateIncomingRequest(RequestEvent requestEvent)
+    {
+        boolean requestAuthenticationOutcome = authenticateIncomingRequest(requestEvent);
+        boolean methodInspectionOutcome = inspectIncomingMethod(requestEvent);
+        boolean headerFieldsInspectionOutcome = inspectIncomingRequestHeaderFields(requestEvent);
+        boolean contentInspectionOutcome = inspectIncomingRequestContent(requestEvent);
+
+        /**
+         * Applying Extension Processing goes here.
+         */
+
+        /**
+         * If all of the above generic checks have been passed, then the
+         * processing that follows is method specific.
+         */
+        return (requestAuthenticationOutcome & methodInspectionOutcome & headerFieldsInspectionOutcome & contentInspectionOutcome);
+    }
+
+    private boolean authenticateIncomingRequest(RequestEvent requestEvent)
+    {
+        return true;
+    }
+
+    private boolean inspectIncomingMethod(RequestEvent requestEvent)
+    {
+        return true;
+    }
+
+    private boolean inspectIncomingRequestHeaderFields(RequestEvent requestEvent)
+    {
+        return true;
+    }
+
+    private boolean inspectIncomingRequestContent(RequestEvent requestEvent)
+    {
+        return true;
+    }
+
+    @Override
+    public void receiveRequest(SIPRequest request, ServiceUnit serviceUnit)
+    {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void receiveResponse(SIPResponse response, ServiceUnit serviceUnit)
+    {
+        logger.info("SIP Response has been received from the NMR side.....");        
+        SipMessageDispatcherImpl sipMessageDispatcher = new SipMessageDispatcherImpl();
+        sipMessageDispatcher.sendResponse(response, serviceUnit);
+    }
+}

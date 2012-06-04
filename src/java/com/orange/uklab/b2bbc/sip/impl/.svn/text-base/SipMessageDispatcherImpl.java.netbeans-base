@@ -1,0 +1,64 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package com.orange.uklab.b2bbc.sip.impl;
+import com.orange.uklab.b2bbc.descriptor.ServiceUnit;
+import com.orange.uklab.b2bbc.runtime.contexts.RuntimeComponentContext;
+import com.orange.uklab.b2bbc.sip.SipMessageDispatcher;
+import java.util.logging.Logger;
+import javax.sip.message.Request;
+import javax.sip.message.Response;
+
+/**
+ *
+ * @author hasanein
+ */
+public class SipMessageDispatcherImpl implements SipMessageDispatcher
+{
+    //private SipUserAgentClientImpl userAgentClient = null;
+    private SipUserAgentImpl userAgentServer = null;
+    private Logger logger = null;
+
+    public SipMessageDispatcherImpl()
+    {
+        initLogger();
+        //this.userAgentClient = new SipUserAgentClientImpl();
+        this.userAgentServer = new SipUserAgentImpl();
+    }
+
+    private void initLogger()
+    {
+        this.logger = RuntimeComponentContext.getInstance().getLogger(this.getClass().getName(), null);
+    }
+
+    @Override
+    public void receiveRequest(Request request, ServiceUnit serviceUnit)
+    {
+        logger.info("Request Message received: " + request.getMethod());
+        logger.info("Forwarding request to the ClientAgentServer for processing...");
+        userAgentServer.receiveRequest(request, serviceUnit);
+    }
+
+    @Override
+    public void receiveResponse(Response response, ServiceUnit serviceUnit)
+    {
+        logger.info("Response Message received: " + response.getReasonPhrase());
+    }
+
+    @Override
+    public void sendResponse(Response response, ServiceUnit serviceUnit)
+    {
+        logger.info("Sending Response: " + response.getReasonPhrase());        
+        userAgentServer.sendResponse(response, serviceUnit);
+        logger.info("Sending Response for the request associated with ServiceUnit: " + serviceUnit.getName());
+    }
+
+    @Override
+    public void sendRequest(Request request, ServiceUnit serviceUnit)
+    {
+        logger.info("Sending Request: " + request.getMethod());
+    }
+
+}

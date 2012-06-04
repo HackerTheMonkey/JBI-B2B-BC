@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : ComponentTaskResults.xml
+    Created on : 12 July 2010, 10:13
+    Author     : Hasanein Al-Khafaji
+    Description: This document represent the part of the JBI Task Result for the
+    JBI component that need to be returned by the deploy() and undeploy() method
+    of the ServiceUnitManager when deploying and undeploying service artifacts
+    to the JBI component.
+
+    The implementation of the factory class need to into account the existance
+    of the OPTIONAL and ZERO-ONE-MORE elements and cater for their requirements
+    accordingly.
+
+    The class that will model this XML document will represent a component
+    task result message factory for a specific component. As a result of this
+    desgin decision, there will be some fields to be set on a per message basis
+    while other fields will be set on the instance level.
+-->
+
+<!-- PART ONE STARTS -->
+<component-task-result>
+    <component-name>{TEXT}</component-name> <!-- factory-level -->
+    <component-task-result-details>
+        <task-result-details>
+            <task-id>{TEXT}</task-id> <!-- message-level -->
+            <task-result>{SUCCESS | FAILED}</task-result> <!-- message-level -->
+            <message-type>{ERROR | WARNING | INFO}</message-type> <!-- OPTIONAL (?) --> <!-- message-level -->
+<!-- PART ONE ENDS -->
+
+<!-- PART TWO STARTS --> <!-- This is modeled as TaskStatusMessage class -->
+            <task-status-message>   <!-- ZERO-ONE-MORE (*), This will ve represented by an array of TaskStatusMessage --><!-- message-level --><!-- message-level -->
+                <msg-loc-info>
+                    <loc-token>{TEXT}</loc-token>
+                    <loc-message>{TEXT}</loc-message>
+                    <loc-parameter>{TEXT}</loc-parameter> <!-- ZERO-ONE-MORE (*) -->
+                </msg-loc-info>
+            </task-status-message>
+<!-- PART ONE ENDS -->
+
+<!-- PART THREE STARTS --> <!-- This is modeled as ExceptionInfo class -->
+            <exception-info> <!-- ZERO-ONE-MORE (*) --><!-- message-level -->
+                <nesting-level>{xsd:integer}</nesting-level>
+                <msg-loc-info>
+                    <loc-token>{TEXT}</loc-token>
+                    <loc-message>{TEXT}</loc-message>
+                    <loc-parameter>{TEXT}</loc-parameter> <!-- ZERO-ONE-MORE (*) -->
+                </msg-loc-info>
+                <stack-trace>{TEXT}</stack-trace>
+            </exception-info>
+<!-- PART ONE ENDS -->
+
+<!-- PART FOUR STARTS -->
+        </task-result-details>
+    </component-task-result-details>
+</component-task-result>
+<!-- PART FOUR ENDS -->

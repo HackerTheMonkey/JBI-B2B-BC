@@ -1,0 +1,21 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package com.orange.uklab.b2bbc.sip;
+import com.orange.uklab.b2bbc.descriptor.ServiceUnit;
+import javax.sip.message.Request;
+import javax.sip.message.Response;
+
+/**
+ *
+ * @author hasanein
+ */
+public interface SipMessageDispatcher
+{
+    public void receiveRequest(Request request, ServiceUnit serviceUnit);
+    public void receiveResponse(Response response, ServiceUnit serviceUnit);
+    public void sendResponse(Response response, ServiceUnit serviceUnit);
+    public void sendRequest(Request request, ServiceUnit serviceUnit);
+}

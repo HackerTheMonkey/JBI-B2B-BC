@@ -1,0 +1,15 @@
+OpenIDE-Module-Name=Orange JBI SIP B2B Deployment Plugin
+OpenIDE-Module-Short-Description=SIP B2B User Agent JBI Binding Component
+OpenIDE-Module-Long-Description=SIP B2B User Agent JBI Binding Component
+OpenIDE-Module-Display-Category=CAPS
+
+WSDLEditor/Binding/B2BBCBindingExt=B2BBC Binding
+WSDLEditor/BindingOperation/B2BBCOperationExt=B2BBC Binding Operation extension
+WSDLEditor/BindingOperationInput/B2BBCInputExt=B2BBC Binding Input extension
+WSDLEditor/BindingOperationOutput/B2BBCOutputExt=B2BBC Binding Output extension
+WSDLEditor/BindingOperationFault/B2BBCFaultExt=B2BBC Binding Fault extension
+WSDLEditor/ServicePort/B2BBCPortExt=B2BBC Service Port extension
+
+
+
+

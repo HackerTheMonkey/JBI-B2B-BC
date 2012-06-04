@@ -1,0 +1,172 @@
+
+package com.orange.uklab.b2bbc.utils;
+
+import com.orange.uklab.b2bbc.main.B2BException;
+
+
+/**
+ * 
+ * @author hasaneinali
+ */
+public class ComponentTaskResultFactory
+{
+    public static final String TASK_RESULT_SUCCESS = "SUCCESS";
+    public static final String TASK_RESULT_FAILED = "FAILED";
+    public static final String MESSAGE_TYPE_ERROR = "ERROR";
+    public static final String MESSAGE_TYPE_WARNING = "WARNING";
+    public static final String MESSAGE_TYPE_INFO = "INFO";
+
+    private String componentName = null;
+    /**
+     * The constructed XML String should contain zero
+     * one or more TaskStatusMessages
+     */
+    private TaskStatusMessage[] taskStatusMessages = null;
+    /**
+     * The constructed XML String should contain zero
+     * one or more ExceptionInfo
+     */
+    private ExceptionInfo[] exceptionInfo = null;
+
+    /**
+     * 
+     * @param componentName
+     */
+    public ComponentTaskResultFactory(String componentName)
+    {
+        this.componentName = componentName;
+    }
+
+    /**
+     * 
+     * @param taskId
+     * @param taskResult
+     * @param optionalMessageType
+     * @param taskStatusMessages
+     * @param exceptionInfo
+     * @return
+     * @throws B2BException
+     */
+    public String createMessage(String taskId, String taskResult, String optionalMessageType, TaskStatusMessage[] taskStatusMessages, ExceptionInfo[] exceptionInfo)
+            throws B2BException
+    {
+        String messagePart01 = "";
+        String messagePart02 = "";
+        String messagePart03 = "";
+        String messagePart04 = "";
+        String finalMessage = "";
+        /**
+         * Check the syntax compliance of the optionalMessageType and
+         * the taskResult parameters, throw a B2BException of they
+         * are not compliant.
+         */
+        checkMessageTypeSyntax(optionalMessageType);
+        checkTaskResultSyntax(taskResult);
+        checkTaskId(taskId);
+        /**
+         * Construct the first part of the message.
+         */
+        messagePart01 = "<component-task-result xmlns=\"http://java.sun.com/xml/ns/jbi/management-message\">" +
+                            "<component-name>" + this.componentName + "</component-name>" +
+                            "<component-task-result-details>" +
+                            "<task-result-details>" + "<task-id>" + taskId + "</task-id>" + 
+                            "<task-result>" + taskResult + "</task-result>";
+        if (optionalMessageType != null)
+        {
+            messagePart01 = messagePart01 + "<message-type>" + optionalMessageType + "</message-type>";
+        }
+        /**
+         * Construct the second part of the message.
+         */
+        for (TaskStatusMessage taskStatusMessage : taskStatusMessages)
+        {
+            String messagePart02_sub01 = "";
+            messagePart02 = messagePart02 + "<task-status-message>" + "<msg-loc-info>" + "<loc-token>" + taskStatusMessage.getLocToken()
+                            + "</loc-token>" + "<loc-message>" + taskStatusMessage.getLocMessage() + "</loc-message>";
+            for (String locParameter : taskStatusMessage.getLocParameters())
+            {
+                messagePart02_sub01 = messagePart02_sub01 + "<loc-parameter>" + locParameter + "</loc-parameter>";
+            }
+            messagePart02 = messagePart02 + messagePart02_sub01 + "</msg-loc-info>" + "</task-status-message>";
+        }
+        /**
+         * Construct the third part of the message.
+         */
+        for (ExceptionInfo ei : exceptionInfo)
+        {
+            String messagePart03_sub01 = "";
+            messagePart03 = messagePart03 + "<exception-info>" + "<nesting-level>" + ei.getNestingLevel() + "</nesting-level>" +
+                            "<msg-loc-info>" + "<loc-token>" + ei.getTaskStatusMessage().getLocToken() + "</loc-token>" +
+                            "<loc-message>" + ei.getTaskStatusMessage().getLocMessage() + "</loc-message>";
+            for(String lp : ei.getTaskStatusMessage().getLocParameters())
+            {
+                messagePart03_sub01 = messagePart03_sub01 + "<loc-parameter>" + lp + "</loc-parameter>";
+            }
+            messagePart03 = messagePart03 + messagePart03_sub01 + "</msg-loc-info>" + "<stack-trace>" + ei.getStackTrace() + "</stack-trace>" +
+                            "</exception-info>";            
+        }
+        /**
+         * Construct the fourth part of the message.
+         */
+        messagePart04 = messagePart04 + "</task-result-details>" + "</component-task-result-details>" + "</component-task-result>";
+        /**
+         * Construct the final message
+         */
+        finalMessage= messagePart01 + messagePart02 + messagePart03 + messagePart04;
+        return finalMessage;
+    }
+
+    /**
+     * This method checks the optional parameter of the MessageType for the
+     * complaince to the JBI Standard values, if it is null (not provided) then
+     * the checking operation will be skipped. If it contain an unrecognized value
+     * then an Exception will be thrown
+     * @param optionalMessageType
+     */
+    private void checkMessageTypeSyntax(String optionalMessageType)
+            throws B2BException
+    {
+        if (optionalMessageType != null)
+        {
+            if (!(optionalMessageType.equals(this.MESSAGE_TYPE_ERROR) || optionalMessageType.equals(this.MESSAGE_TYPE_INFO) || optionalMessageType.equals(this.MESSAGE_TYPE_WARNING)))
+            {
+                throw new B2BException("Unrecognized MessageType: " + optionalMessageType);
+            }
+        }
+    }
+
+    /**
+     * 
+     * @param taskResult
+     * @throws B2BException
+     */
+    private void checkTaskResultSyntax(String taskResult)
+            throws B2BException
+    {
+        if (taskResult != null)
+        {
+            if (!(taskResult.equals(this.TASK_RESULT_FAILED) || taskResult.equals(this.TASK_RESULT_SUCCESS)))
+            {
+               throw new B2BException("Unrecognized TaskResult: " + taskResult);
+            }
+        }
+        else
+        {
+            throw new B2BException("Mandatory ComponentTaskResult is set to null: TaskResult");
+        }
+    }
+
+    /**
+     * 
+     * @param taskId
+     * @throws B2BException
+     */
+    private void checkTaskId(String taskId)
+            throws B2BException
+    {
+        if (taskId == null)
+        {
+            throw new B2BException("Mandatory ComponentTaskResult is set to null: TaskID");
+        }
+    }
+}

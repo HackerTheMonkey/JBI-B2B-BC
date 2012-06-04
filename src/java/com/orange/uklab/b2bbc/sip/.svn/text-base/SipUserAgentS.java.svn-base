@@ -1,0 +1,21 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package com.orange.uklab.b2bbc.sip;
+import javax.sip.message.Request;
+
+/**
+ * Processing Requests and generating responses.
+ * @author hasanein
+ */
+public interface SipUserAgentServer
+{
+    /**
+     * This method is used to receive and process the incoming SIP
+     * messages received via SIP native interface through the SIP stack.
+     * @param sipRequest
+     */
+    public void processIncomingInvite(javax.xml.transform.Source sipWsdlRequest);
+}

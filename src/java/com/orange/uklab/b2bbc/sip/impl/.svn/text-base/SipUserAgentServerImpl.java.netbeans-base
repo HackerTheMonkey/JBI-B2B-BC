@@ -1,0 +1,31 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package com.orange.uklab.b2bbc.sip.impl;
+import com.orange.uklab.b2bbc.nmr.NmrAgent;
+import com.orange.uklab.b2bbc.nmr.impl.NmrAgentImpl;
+import com.orange.uklab.b2bbc.sip.SipUserAgentServer;
+import javax.sip.message.Request;
+
+/**
+ *
+ * @author hasanein
+ */
+public class SipUserAgentServerImpl implements SipUserAgentServer
+{
+    private NmrAgent nmrAgent = null;
+
+    public SipUserAgentServerImpl()
+    {
+        this.nmrAgent = new NmrAgentImpl();
+    }
+    
+    @Override
+    public void processIncomingInvite(javax.xml.transform.Source sipWsdlRequest)
+    {
+        nmrAgent.sendNormalizedMessage(sipWsdlRequest);
+    }
+
+}

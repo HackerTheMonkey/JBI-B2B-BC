@@ -1,0 +1,31 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package com.orange.uklab.b2bbc.runtime.contexts.impl;
+import com.orange.uklab.b2bbc.descriptor.ServiceUnit;
+import javax.jbi.servicedesc.ServiceEndpoint;
+
+/**
+ *
+ * @author hasanein
+ */
+public interface ServiceUnitStore
+{
+    public final String SERVICE_UNIT_STATUS_STARTED = "started";
+    public final String SERVICE_UNIT_STATUS_SHUTDOWN = "shutdown";
+    public final String SERVICE_UNIT_STATUS_STOPPED = "stopped";
+    
+    public boolean storeServiceUnit(ServiceUnit serviceUnit) throws StorageException;
+    public void storeServiceUnits(ServiceUnit[] serviceUnits) throws StorageException;
+    public boolean removeServiceUnit(String serviceUnitName) throws StorageException;
+    public ServiceUnit getServiceUnit(String serviceUnitName);
+    public String getServiceUnitStatus(String serviceUnitName);
+    public void setServiceUnitStatus(String serviceUnitName, String status) throws IllegalArgumentException, StorageException;
+    public ServiceEndpoint[] getAllDefinedEndpoints();
+    public ServiceEndpoint[] getServiceUnitEndpoints(String serviceUnitName);
+    public ServiceEndpoint getServiceEndpoint(String endpointName);
+    public ServiceUnit[] getAllServiceUnits();
+    public void clear();
+}

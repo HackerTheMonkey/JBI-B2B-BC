@@ -1,0 +1,6 @@
+b2bbc.model.ExtElementFactoryProvider$BindingExtFactory
+b2bbc.model.ExtElementFactoryProvider$OperationExtFactory
+b2bbc.model.ExtElementFactoryProvider$InputExtFactory
+b2bbc.model.ExtElementFactoryProvider$OutputExtFactory
+b2bbc.model.ExtElementFactoryProvider$FaultExtFactory
+b2bbc.model.ExtElementFactoryProvider$PortExtFactory

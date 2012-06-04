@@ -1,0 +1,33 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package com.orange.uklab.b2bbc.sip;
+import java.util.Date;
+
+/**
+ *
+ * @author hasanein
+ */
+public interface B2BSession
+{
+    public String getOwnerServiceUnitName();
+    public void setOwnerServiceUnitName(String serviceUnitName);
+
+    public Object getAttribute(String attributeName);
+    public void setAttribute(String attributeName, Object attribute);
+
+    public Object getTimer();
+    public void setTimer(Object timer);
+
+    public B2BDialog getDialog(String dialogId);
+    public void addDialog(B2BDialog b2BDialog);
+    public void removeDialog(String dialogId);
+
+    public Date getCreationTime();
+    public void setCreationTime(Date creationTime);
+
+    public String getB2BSessionId();
+    public void setB2BSessionId(String b2bSessionID);
+}

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document   : template.xml
+    Description: Describes the binding's extensibility element views in WSDL wizard
+-->
+<templateGroup xmlns="http://xml.netbeans.org/schema/templates"
+               xmlns:xsi="http://www.w3.org/1999/XMLSchema/instance"
+               xsi:schemaLocation="http://xml.netbeans.org/schema/templates  templates.xsd" 
+               namespace="http://java.sun.com/jbi/wsdl-extensions/sample/jmx-bc/" 
+               prefix="b2bbc">
+    <template name="B2BBCTransport">
+        <wsdlElement name="Binding">
+            <!-- binding extension element attribute default values-->
+            <extensionElement name="binding">
+                <!-- TODO: add this extension elements any attribute default values here.
+                <extensionAttr name="my_attrib"  defaultValue="my_attrib_default_value"/>
+                -->                
+            </extensionElement>
+        </wsdlElement>
+        <wsdlElement name="BindingOperation">
+            <!-- binding operation extension element attribute default values-->
+            <extensionElement name="operation">
+                <!-- TODO: add this extension elements any attribute default values here.
+                <extensionAttr name="my_attrib"  defaultValue="my_attrib_default_value"/>
+                -->                
+                <extensionAttr name="action"  defaultValue=""/>
+            </extensionElement>
+        </wsdlElement>
+        <wsdlElement name="BindingOperationInput">
+            <!-- binding operation input extension element attribute default values-->
+            <extensionElement name="input">
+                <!-- TODO: add this extension elements any attribute default values here.
+                <extensionAttr name="my_attrib"  defaultValue="my_attrib_default_value"/>
+                -->                
+            </extensionElement>
+        </wsdlElement>
+        <wsdlElement name="BindingOperationOutput">
+            <!-- binding operation output extension element attribute default values-->
+            <extensionElement name="output" >
+                <!-- TODO: add this extension elements any attribute default values here.
+                <extensionAttr name="my_attrib"  defaultValue="my_attrib_default_value"/>
+                -->
+            </extensionElement>
+        </wsdlElement>
+        <wsdlElement name="BindingOperationFault">
+            <!-- binding operation fault extension element attribute default values-->
+            <extensionElement name="fault" >
+                <!-- TODO: add this extension elements any attribute default values here.
+                <extensionAttr name="my_attrib"  defaultValue="my_attrib_default_value"/>
+                -->
+            </extensionElement>
+        </wsdlElement>        
+        <wsdlElement name="ServicePort">
+            <!-- Port extension element attribute default values-->
+            <extensionElement name="address" >
+                <!-- TODO: add this extension elements any attribute default values here.
+                <extensionAttr name="my_attrib"  defaultValue="my_attrib_default_value"/>
+                -->                
+                <extensionAttr name="serviceURL"  defaultValue="service:jmx:rmi:///jndi/rmi://localhost:8686/jmxrmi"/>
+                <extensionAttr name="username"  defaultValue="admin"/>
+                <extensionAttr name="password"  defaultValue="adminadmin"/>
+                <extensionAttr name="mbean"  defaultValue="com.sun.jbi.sample.jmxbc:jmxbc-ep-address=B2BBC/greetings"/>
+            </extensionElement>
+        </wsdlElement>
+    </template>
+    <!-- TODO: define any other template with other default values
+     <template name="template2">
+      ...
+     </template>
+    -->
+</templateGroup>

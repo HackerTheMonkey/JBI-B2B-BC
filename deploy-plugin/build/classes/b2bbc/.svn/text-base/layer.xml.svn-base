@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+    <folder name="WSDLEditor">
+        <!-- WSDL Editor required information for text/visual editing and validating the 
+        wsdl extension elements for this binding component -->
+        
+        <!-- XSD file for the wsdl extension and its namespace and prefix values -->        
+        <file name="B2BBCWsdlExt.xsd" url="B2BBCWsdlExt.xsd">
+            <attr name="namespace" stringvalue="http://java.sun.com/jbi/wsdl-extensions/sample/jmx-bc/" />
+            <attr name="prefix" stringvalue="b2bbc" />
+        </file>
+        <!-- wsdl extension elements and their visual attributes description used 
+        in each wsdl element of the wsdl defintion to add the extension element 
+        TODO: add/remove any extension elements/attribute information that have 
+        modified in the wsdl extension schema here to map them to WSDL Editor model -->
+        <folder name ="Binding">
+            <file name="B2BBCBindingExt">
+                <attr name="xsdFileName" stringvalue="B2BBCWsdlExt" />
+                <attr name="element" stringvalue="binding" />
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="b2bbc.Bundle" />
+                <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/b2bbc/resources/binding-ext.png" /> 
+            </file>
+        </folder>
+        
+        <folder name ="BindingOperation">
+            <file name="B2BBCOperationExt">
+                <attr name="xsdFileName" stringvalue="B2BBCWsdlExt" />
+                <attr name="element" stringvalue="operation" />
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="b2bbc.Bundle" />
+                <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/b2bbc/resources/operation-ext.png" /> 
+            </file>
+        </folder>
+        
+        <folder name ="BindingOperationInput">
+            <file name="B2BBCInputExt">
+                <attr name="xsdFileName" stringvalue="B2BBCWsdlExt" />
+                <attr name="element" stringvalue="input" />
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="b2bbc.Bundle" />
+                <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/b2bbc/resources/input-ext.png" /> 
+            </file>
+        </folder>	        
+        
+        <folder name ="BindingOperationOutput">
+            <file name="B2BBCOutputExt">
+                <attr name="xsdFileName" stringvalue="B2BBCWsdlExt" />
+                <attr name="element" stringvalue="output" />
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="b2bbc.Bundle" />
+                <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/b2bbc/resources/output-ext.png" /> 
+            </file>
+        </folder>	        
+        
+        <folder name ="BindingOperationFault">
+            <file name="B2BBCFaultExt">
+                <attr name="xsdFileName" stringvalue="B2BBCWsdlExt" />
+                <attr name="element" stringvalue="fault" />
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="b2bbc.Bundle" />
+                <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/b2bbc/resources/fault-ext.png" /> 
+            </file>            
+        </folder>
+        
+        <folder name ="ServicePort">
+            <file name="B2BBCPortExt" >
+                <attr name="xsdFileName" stringvalue="B2BBCWsdlExt" />
+                <attr name="element" stringvalue="address" />
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="b2bbc.Bundle" />
+                <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/b2bbc/resources/port-ext.png" /> 
+            </file>
+        </folder>	        
+    </folder>
+    
+    <folder name="JbiComponents">
+        <!-- JBI Component description for binding component required to participate 
+             in the jbi composite application project that generates the service unit 
+             for this binding component -->
+        <folder name="B2BBC">
+            <attr name="id" stringvalue="B2BBC"/>
+            <attr name="type" stringvalue="Binding"/>
+            <attr name="description" stringvalue="Description of binding component : B2BBC"/>
+            <file name="B2BBC.binding-1.0" >
+                <attr name="namespace" stringvalue="http://java.sun.com/jbi/wsdl-extensions/sample/jmx-bc/"/>
+            </file>
+        </folder>
+    </folder>
+    
+</filesystem>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="SipProvidesServiceDescription" targetNamespace="http://j2ee.netbeans.org/wsdl/B2B-BC/SipProvidesServiceDescription"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://j2ee.netbeans.org/wsdl/B2B-BC/SipProvidesServiceDescription">
+    <types>
+        <xsd:schema targetNamespace="http://www.orange.com/uklab/b2bbc/wsdl/SipConsumesServiceDescription" xmlns:tns="http://www.orange.com/uklab/b2bbc/wsdl/SipConsumesServiceDescription">
+            <xsd:element name="SipRequestUriElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="ViaHeaderFieldElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="MaxForwardsHeaderFieldElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:int"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="ToHeaderFieldElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="FromHeaderFieldElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="CallIDHeaderFieldElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="CSeqHeaderFieldElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="ContactHeaderFieldElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="ContentTypeHeaderFieldElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="ContentLengthHeaderFieldElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:long"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="SipMessageContentElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="ContentDispositionElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="RecordRouteElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+        <message name="sendResponse">
+            <part name="Status-Line" element="tns:SipStatusLineElement"/>
+            <part name="Via" element="tns:ViaHeaderFieldElement"/>
+            <part name="Max-Forwards" element="tns:MaxForwardsHeaderFieldElement"/>
+            <part name="From" element="tns:FromHeaderFieldElement"/>
+            <part name="To" element="tns:ToHeaderFieldElement"/>
+            <part name="Call-ID" element="tns:CallIDHeaderFieldElement"/>
+            <part name="CSeq" element="tns:CSeqHeaderFieldElement"/>
+            <part name="Contact" element="tns:ContactHeaderFieldElement"/>
+            <part name="Content-Length" element="tns:ContentLengthHeaderFieldElement"/>
+            <part name="Content-Type" element="tns:ContentTypeHeaderFieldElement"/>
+            <part name="Content-Disposition" element="tns:ContentDispositionElement"/>
+            <part name="Record-Route" element="tns:RecordRouteElement"/>
+            <part name="Sip-Message-Content" element="tns:SipMessageContentElement"/>
+        </message>
+        <!--
+        Here is the port-type definitions (or interfaces as per WSDL 2.0 specs) that
+        defines a one-way operation (IN-ONLY MEP) to be used for sending the SIP
+        messages back and forth as the case in SIP servlets (void doInvite() and void
+        send() methods.
+    -->
+    <portType name="receiveInviteMessagePortType">
+        <operation name="receiveInviteMessageOperation">
+            <input name="sipInviteInput" message="tns:receiveInviteMessage"/>
+        </operation>
+    </portType>
+</definitions>
+
+
+
+

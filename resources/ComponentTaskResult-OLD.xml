@@ -1,0 +1,66 @@
+<!--
+    We need to check the syntax of this XML Document to the RELAX-NG specification
+    that describes it. Then we need to devide it into parts to start the coding of the
+    application that will generate such kind of documents taking inti consideration the
+    optional, mandatory and the elements that could exist more than once in a given document.
+-->
+<component-task-result>
+    <ComponentName>{xsd:NCName}</ComponentName>
+    <component-task-result-details>
+        <task-result-details>
+            <task-id>{text}</task-id>
+            <task-result>{ "SUCCESS" | "FAILED" }</task-result>
+            <message-type>{ "ERROR" | "WARNING" | "INFO" }</message-type>?
+            <task-status-msg>
+                <msg-loc-info>*
+                    <loc-token>{text}</loc-token>
+                    <loc-message>{text}</loc-message>
+                    <loc-param>text</loc-param>*
+                </msg-loc-info>
+            </task-status-msg>
+            <exception-info>*
+                <nesting-level>xsd:integer</nesting-level>
+                <msg-loc-info>*
+                    <loc-token>{text}</loc-token>
+                    <loc-message>{text}</loc-message>
+                    <loc-param>text</loc-param>*
+                </msg-loc-info>
+                <stack-trace>{text}</stack-trace>
+            </exception-info>
+        </task-result-details>
+    </component-task-result-details>
+</component-task-result>
+
+<!--
+This is the RELAX-NG notation part
+
+    default namespace = "http://java.sun.com/xml/ns/jbi/management-message"
+    start = element jbi-task {
+    }
+    attribute version { xsd:decimal }, jbi-task-result
+    jbi-task-result = element jbi-task-result {
+    }
+    frmwk-task-result, component-task-result*
+    frmwk-task-result = element frmwk-task-result {
+    }
+    frmwk-task-result-details, element is-cause-framework { "YES" | "NO"}?
+    component-task-result = element component-task-result {
+    }
+    element component-name { xsd:NCName }, component-task-result-details
+    frmwk-task-result-details = element frmwk-task-result-details {
+    }
+    task-result-details, element locale { text }
+    component-task-result-details = element component-task-result-details {
+    }
+    task-result-details
+    task-result-details = element task-result-details {
+    }
+    element task-id { text }, element task-result { "SUCCESS" | "FAILED" }, element message-type { "ERROR" | "WARNING" | "INFO" }?, element task-status-msg { msg-loc-info }*, exception-info*
+    msg-loc-info = element msg-loc-info {
+    }
+    element loc-token { text }, element loc-message { text }, element loc-param { text }*
+    exception-info = element exception-info {
+    }
+    element nesting-level { xsd:integer }, msg-loc-info, element stack-trace { text }
+
+-->

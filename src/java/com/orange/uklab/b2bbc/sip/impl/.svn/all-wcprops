@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/MySourceCodes/!svn/ver/98/Projects/OrangeProjects/B2B-BC/src/java/com/orange/uklab/b2bbc/sip/impl
+END
+SipListenerImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/MySourceCodes/!svn/ver/99/Projects/OrangeProjects/B2B-BC/src/java/com/orange/uklab/b2bbc/sip/impl/SipListenerImpl.java
+END
+B2BDialogImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/MySourceCodes/!svn/ver/99/Projects/OrangeProjects/B2B-BC/src/java/com/orange/uklab/b2bbc/sip/impl/B2BDialogImpl.java
+END
+SipDirectorImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/MySourceCodes/!svn/ver/99/Projects/OrangeProjects/B2B-BC/src/java/com/orange/uklab/b2bbc/sip/impl/SipDirectorImpl.java
+END
+SipMessageDispatcherImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/MySourceCodes/!svn/ver/99/Projects/OrangeProjects/B2B-BC/src/java/com/orange/uklab/b2bbc/sip/impl/SipMessageDispatcherImpl.java
+END
+B2BSessionImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/MySourceCodes/!svn/ver/99/Projects/OrangeProjects/B2B-BC/src/java/com/orange/uklab/b2bbc/sip/impl/B2BSessionImpl.java
+END
+SipUserAgentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/MySourceCodes/!svn/ver/99/Projects/OrangeProjects/B2B-BC/src/java/com/orange/uklab/b2bbc/sip/impl/SipUserAgentImpl.java
+END

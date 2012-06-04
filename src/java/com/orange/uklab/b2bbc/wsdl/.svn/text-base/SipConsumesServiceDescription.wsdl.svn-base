@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+    name="SipConsumesServiceDescription"
+    targetNamespace="http://www.orange.com/uklab/b2bbc/wsdl/SipConsumesServiceDescription"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://www.orange.com/uklab/b2bbc/wsdl/SipConsumesServiceDescription"
+    xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:b2bbc="http://java.sun.com/jbi/wsdl-extensions/sample/jmx-bc/">
+    <types>
+        <xsd:schema targetNamespace="http://www.orange.com/uklab/b2bbc/wsdl/SipConsumesServiceDescription" xmlns:tns="http://www.orange.com/uklab/b2bbc/wsdl/SipConsumesServiceDescription">
+            <xsd:element name="SipRequestUriElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="ViaHeaderFieldElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="MaxForwardsHeaderFieldElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:int"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="ToHeaderFieldElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="FromHeaderFieldElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="CallIDHeaderFieldElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="CSeqHeaderFieldElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="ContactHeaderFieldElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="ContentTypeHeaderFieldElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="ContentLengthHeaderFieldElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:long"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="SipMessageContentElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="ContentDispositionElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="RecordRouteElement">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+
+    <!--
+        This is a WSDL mapping of the SIP INVITE message, at the moment this
+        contains only the basic header fields in an INVITE message. Full mapping
+        of the INVITE message will be added later on.
+        WSDL 1.1 is being used, this is only an abstract WSDL document.
+    -->
+    <message name="receiveInviteMessage">
+        <part name="Request-Line" element="tns:SipRequestLineElement"/>
+        <part name="Via" element="tns:ViaHeaderFieldElement"/>
+        <part name="Max-Forwards" element="tns:MaxForwardsHeaderFieldElement"/>
+        <part name="From" element="tns:FromHeaderFieldElement"/>
+        <part name="To" element="tns:ToHeaderFieldElement"/>
+        <part name="Call-ID" element="tns:CallIDHeaderFieldElement"/>
+        <part name="CSeq" element="tns:CSeqHeaderFieldElement"/>
+        <part name="Contact" element="tns:ContactHeaderFieldElement"/>
+        <part name="Content-Length" element="tns:ContentLengthHeaderFieldElement"/>
+        <part name="Content-Type" element="tns:ContentTypeHeaderFieldElement"/>
+        <part name="Content-Disposition" element="tns:ContentDispositionElement"/>
+        <part name="Record-Route" element="tns:RecordRouteElement"/>
+        <part name="Sip-Message-Content" element="tns:SipMessageContentElement"/>
+    </message>
+    <message name="sendResponseMessage">
+        <part name="Status-Line" element="tns:SipStatusLineElement"/>
+        <part name="Via" element="tns:ViaHeaderFieldElement"/>
+        <part name="Max-Forwards" element="tns:MaxForwardsHeaderFieldElement"/>
+        <part name="From" element="tns:FromHeaderFieldElement"/>
+        <part name="To" element="tns:ToHeaderFieldElement"/>
+        <part name="Call-ID" element="tns:CallIDHeaderFieldElement"/>
+        <part name="CSeq" element="tns:CSeqHeaderFieldElement"/>
+        <part name="Contact" element="tns:ContactHeaderFieldElement"/>
+        <part name="Content-Length" element="tns:ContentLengthHeaderFieldElement"/>
+        <part name="Content-Type" element="tns:ContentTypeHeaderFieldElement"/>
+        <part name="Content-Disposition" element="tns:ContentDispositionElement"/>
+        <part name="Record-Route" element="tns:RecordRouteElement"/>
+        <part name="Sip-Message-Content" element="tns:SipMessageContentElement"/>
+    </message>
+    <!--
+        Here is the port-type definitions (or interfaces as per WSDL 2.0 specs) that
+        defines a one-way operation (IN-ONLY MEP) to be used for sending the SIP
+        messages back and forth as the case in SIP servlets (void doInvite() and void
+        send() methods.
+    -->
+    <portType name="receiveInviteMessagePortType">
+        <operation name="receiveInviteMessageOperation">
+            <input name="sipInviteInput" message="tns:receiveInviteMessage"/>
+        </operation>
+    </portType>
+    <!--Binding definitions-->
+    <binding name="receiveInviteMessageBinding" type="tns:receiveInviteMessagePortType">
+    </binding>
+    <!--
+        Defining the partner links, this is automatically generated by the WSDL 1.1
+        Editor. Hasanein
+    -->
+    <service name="receiveInviteMessageService">
+        <port name="receiveInviteMessagePort" binding="tns:receiveInviteMessageBinding">
+            <b2bbc:address bindingAddress="192.168.1.2" bindingProtocol="UDP" bindingPort="5060" />
+        </port>
+    </service>
+    <plnk:partnerLinkType name="receiveInviteMessage">
+        <plnk:role name="role1" portType="tns:receiveInviteMessagePortType"/>
+    </plnk:partnerLinkType>
+</definitions>

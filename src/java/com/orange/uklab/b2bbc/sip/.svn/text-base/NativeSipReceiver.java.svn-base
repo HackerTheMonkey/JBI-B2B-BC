@@ -1,0 +1,26 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package com.orange.uklab.b2bbc.sip;
+import javax.sip.DialogTerminatedEvent;
+import javax.sip.IOExceptionEvent;
+import javax.sip.RequestEvent;
+import javax.sip.ResponseEvent;
+import javax.sip.TimeoutEvent;
+import javax.sip.TransactionTerminatedEvent;
+
+/**
+ *
+ * @author hasanein
+ */
+public interface NativeSipReceiver
+{
+    public void receiveEvent(DialogTerminatedEvent dialogTerminatedEvent);
+    public void receiveEvent(IOExceptionEvent iOExceptionEvent);
+    public void receiveEvent(RequestEvent requestEvent);
+    public void receiveEvent(ResponseEvent responseEvent);
+    public void receiveEvent(TimeoutEvent timeoutEvent);
+    public void receiveEvent(TransactionTerminatedEvent transactionTerminatedEvent);
+}

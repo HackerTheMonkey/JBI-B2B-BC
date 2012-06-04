@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : TaskResultExample.xml
+    Created on : 12 July 2010, 12:59
+    Author     : lhhm2777
+    Description:
+        Purpose of the document follows.
+-->
+
+<component-task-result xmlns="http://java.sun.com/xml/ns/jbi/management-message">
+    <component-name>B2BBC</component-name>
+    <component-task-result-details>
+        <task-result-details>
+            <task-id>MyTaskID</task-id>
+            <task-result>SUCCESS</task-result>
+            <message-type>INFO</message-type>
+            <task-status-message>
+                <msg-loc-info>
+                    <loc-token>MyLocToken01</loc-token>
+                    <loc-message>MyLocMessage01</loc-message>
+                    <loc-parameter>p1</loc-parameter>
+                    <loc-parameter>p2</loc-parameter>
+                </msg-loc-info>
+            </task-status-message>
+            <exception-info>
+                <nesting-level>1</nesting-level>
+                <msg-loc-info>
+                    <loc-token>MyLocToken02</loc-token>
+                    <loc-message>MyLocMessage02</loc-message>
+                    <loc-parameter>p11</loc-parameter>
+                    <loc-parameter>p21</loc-parameter>
+                </msg-loc-info>
+                <stack-trace>This is my stack trace</stack-trace>
+            </exception-info>
+        </task-result-details>
+    </component-task-result-details>
+</component-task-result>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module codename="b2bbc">
+    <module_version install_time="1280676353234" last="true" origin="installer" specification_version="1.0">
+        <file crc="317558926" name="config/Modules/b2bbc.xml"/>
+        <file crc="1834444308" name="modules/b2bbc.jar"/>
+    </module_version>
+</module>

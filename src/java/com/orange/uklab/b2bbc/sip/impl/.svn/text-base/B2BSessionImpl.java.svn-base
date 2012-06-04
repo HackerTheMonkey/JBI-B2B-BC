@@ -1,0 +1,105 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package com.orange.uklab.b2bbc.sip.impl;
+import com.orange.uklab.b2bbc.sip.B2BDialog;
+import com.orange.uklab.b2bbc.sip.B2BSession;
+import java.util.Date;
+import java.util.HashMap;
+
+/**
+ *
+ * @author hasanein
+ */
+public class B2BSessionImpl implements B2BSession
+{
+    private String ownerServiceUnitName = null;
+    private HashMap<String, Object> attributes = new HashMap<String, Object>();
+    private Object timer = null;
+    private HashMap<String, B2BDialog> dialogs = new HashMap<String, B2BDialog>();
+    private Date creationTime = null;
+    private String sessionId = null;
+    private String b2bSessionID = null;
+
+    @Override
+    public String getOwnerServiceUnitName()
+    {
+        return ownerServiceUnitName;
+    }
+
+    @Override
+    public void setOwnerServiceUnitName(String serviceUnitName)
+    {
+        this.ownerServiceUnitName = serviceUnitName;
+    }
+
+    @Override
+    public Object getAttribute(String attributeName)
+    {
+        return attributes.get(attributeName);
+    }
+
+    @Override
+    public void setAttribute(String attributeName, Object attribute)
+    {
+        this.attributes.put(attributeName, attribute);
+    }
+
+    @Override
+    public Object getTimer()
+    {
+        return timer;
+    }
+
+    @Override
+    public void setTimer(Object timer)
+    {
+        this.timer = timer;
+    }
+
+    @Override
+    public B2BDialog getDialog(String dialogId)
+    {
+        return dialogs.get(dialogId);
+    }
+
+    @Override
+    public void addDialog(B2BDialog b2BDialog)
+    {
+        String dialogId = b2BDialog.getCallId() + b2BDialog.getLocalTag() + b2BDialog.getRemoteTag();
+        this.dialogs.put(dialogId, b2BDialog);
+    }
+
+    @Override
+    public void removeDialog(String dialogId)
+    {
+        this.dialogs.remove(dialogId);
+    }
+
+    @Override
+    public Date getCreationTime()
+    {
+        return creationTime;
+    }
+
+    @Override
+    public void setCreationTime(Date creationTime)
+    {
+        this.creationTime = creationTime;
+    }
+
+    @Override
+    public String getB2BSessionId()
+    {
+        return b2bSessionID;
+    }
+
+    @Override
+    public void setB2BSessionId(String b2bSessionID)
+    {
+        this.b2bSessionID = b2bSessionID;
+    }
+
+}

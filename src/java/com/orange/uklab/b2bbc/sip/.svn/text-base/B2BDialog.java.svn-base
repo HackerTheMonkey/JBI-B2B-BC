@@ -1,0 +1,59 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package com.orange.uklab.b2bbc.sip;
+import gov.nist.javax.sip.header.RecordRouteList;
+import java.util.Date;
+import javax.sip.address.SipURI;
+
+/**
+ *
+ * @author hasanein
+ */
+public interface B2BDialog
+{
+    public String getCallId();
+    public void setCallId(String callId);
+
+    public String getRemoteTag();
+    public void setRemoteTag(String remoteTag);
+    
+    public String getLocalTag();
+    public void setLocalTag(String localTag);
+
+    public SipURI getLocalUri();
+    public void setLocalUri(SipURI sipURI);
+
+    public SipURI getRemoteUri();
+    public void setRemoteUri(SipURI sipURI);
+
+    public RecordRouteList getRouteSet();
+    public void setRouteSet(RecordRouteList routeSet);
+
+    public String getB2BSessionID();
+    public void setB2BSessionID(String b2bSessionId);
+
+    public String getState();
+    public void setState(String state);
+
+    public Object getAttribute(String attributeName);
+    public void setAttribute(String attributeName, Object attribute);
+
+    public Date getCreationTime();
+    public void setCreationTime(Date creationTime);
+
+    public long getLocalSeqNumber();
+    public void setLocalSeqNumber(long localSeqNumber);
+
+    public long getRemoteSeqNumber();
+    public void setRemoteSeqNumber(long remoteSeqNumber);
+
+    public boolean isSecure();
+    public void setSecure(boolean secureFlag);
+
+    public SipURI getRemoteTarget();
+    public void setRemoteTarget(SipURI remoteTarget);
+
+}

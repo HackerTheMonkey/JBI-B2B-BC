@@ -1,0 +1,186 @@
+<?xml version="1.0" ?>
+<project name="B2BBC">
+	<property name="myclasspath" location="lib\jbi-admin-cli.jar:lib\jbi-admin-common.jar:lib\jbi-admin-gui.jar:lib\jbi-ant-tasks.jar:lib\jbi-cli-ext.jar:lib\jbi-ext.jar:lib\jbi-gui-ext.jar:lib\jbi-upgrade-tool.jar:lib\jbi.jar:lib\jbi_framework.jar:lib\jbi_rt.jar:lib\xbean.jar" />
+	<property name="zipFileLocation" location="D:\\MyDocuments\\MyStudy\\PROJECT\\source_codes\\B2B-BC\\dist\\B2B-BC.zip" />	
+	
+	<target name="start">
+		<taskdef 
+			name="start"
+			classname="com.sun.jbi.ui.ant.JbiStartComponentTask"
+			classpath="${myclasspath}"
+		/>
+		<start
+			username="admin"
+			password="adminadmin"
+			port="8686"
+			host="localhost"
+			name="B2BBC"
+		/>
+	</target>
+	
+	<target name="stop">
+		<taskdef 
+			name="stop"
+			classname="com.sun.jbi.ui.ant.JbiStopComponentTask"
+			classpath="${myclasspath}"
+		/>
+		<stop
+			username="admin"
+			password="adminadmin"
+			port="8686"
+			host="localhost"
+			name="B2BBC"
+		/>
+	</target>
+	
+	<target name="shutdown">
+		<taskdef 
+			name="shutdown"
+			classname="com.sun.jbi.ui.ant.JbiShutdownComponentTask"
+			classpath="${myclasspath}"
+		/>
+		<shutdown
+			username="admin"
+			password="adminadmin"
+			port="8686"
+			host="localhost"
+			name="B2BBC"
+		/>
+	</target>
+	
+	<target name="install">
+		<taskdef 
+			name="install"
+			classname="com.sun.jbi.ui.ant.JbiInstallComponentTask"
+			classpath="${myclasspath}"
+		/>
+		<taskdef 
+			name="start"
+			classname="com.sun.jbi.ui.ant.JbiStartComponentTask"
+			classpath="${myclasspath}"
+		/>		
+		<install
+			username="admin"
+			password="adminadmin"
+			port="8686"
+			host="localhost"
+			file="${zipFileLocation}"
+		/>		
+		<start
+			username="admin"
+			password="adminadmin"
+			port="8686"
+			host="localhost"
+			name="B2BBC"
+		/>
+	</target>
+	
+	<target name="uninstall" depends="stop, shutdown">
+		<taskdef 
+			name="uninstall"
+			classname="com.sun.jbi.ui.ant.JbiUninstallComponentTask"
+			classpath="${myclasspath}"
+		/>
+		<uninstall
+			username="admin"
+			password="adminadmin"
+			port="8686"
+			host="localhost"
+			name="B2BBC"
+		/>		
+	</target>	
+	
+	<target name="reinstall" depends="stop, shutdown, uninstall, install">	
+	</target>
+	
+	<target name="restart" depends="stop, start">	
+	</target>
+	
+	<target name="deployStartSA">
+		<taskdef 
+			name="deploySA"
+			classname="com.sun.jbi.ui.ant.JbiDeployServiceAssemblyTask"
+			classpath="${myclasspath}"
+		/>
+		<taskdef 
+			name="startSA"
+			classname="com.sun.jbi.ui.ant.JbiStartServiceAssemblyTask"
+			classpath="${myclasspath}"
+		/>
+		<deploySA
+			username="admin"
+			password="adminadmin"
+			port="8686"
+			host="localhost"
+			file="D:\\MyDocuments\\MyStudy\\PROJECT\\source_codes\\Deployable_SUs\\MockSU1.zip"
+		/>
+		<startSA
+			username="admin"
+			password="adminadmin"
+			port="8686"
+			host="localhost"
+			name="MockSU1"
+		/>
+	</target>
+	
+	<target name="shutdownUndeploySA">
+		<taskdef 
+			name="shutdownSA"
+			classname="com.sun.jbi.ui.ant.JbiShutdownServiceAssemblyTask"
+			classpath="${myclasspath}"
+		/>
+		<taskdef 
+			name="undeploySA"
+			classname="com.sun.jbi.ui.ant.JbiUndeployServiceAssemblyTask"
+			classpath="${myclasspath}"
+		/>
+		<shutdownSA
+			username="admin"
+			password="adminadmin"
+			port="8686"
+			host="localhost"
+			name="MockSU1"
+		/>
+		<undeploySA
+			username="admin"
+			password="adminadmin"
+			port="8686"
+			host="localhost"
+			name="MockSU1"
+		/>
+	</target>
+	
+	<target name="shutdownSA">
+		<taskdef 
+			name="shutdownSA"
+			classname="com.sun.jbi.ui.ant.JbiShutdownServiceAssemblyTask"
+			classpath="${myclasspath}"
+		/>		
+		<shutdownSA
+			username="admin"
+			password="adminadmin"
+			port="8686"
+			host="localhost"
+			name="MockSU1"
+		/>
+	</target>
+	
+	<target name="startSA">
+		<taskdef 
+			name="startSA"
+			classname="com.sun.jbi.ui.ant.JbiStartServiceAssemblyTask"
+			classpath="${myclasspath}"
+		/>		
+		<startSA
+			username="admin"
+			password="adminadmin"
+			port="8686"
+			host="localhost"
+			name="MockSU1"
+		/>
+	</target>
+	
+	<target name="redeploySA" depends="shutdownUndeploySA, reinstall, deployStartSA">		
+	</target>
+	
+</project>

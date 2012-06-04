@@ -1,0 +1,149 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model
+END
+ExtComponent$ExtModelImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/ExtComponent$ExtModelImpl.class
+END
+ExtElementFactoryProvider$OperationExtFactory.class
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/ExtElementFactoryProvider$OperationExtFactory.class
+END
+ExtElementFactoryProvider$OutputExtFactory.class
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/ExtElementFactoryProvider$OutputExtFactory.class
+END
+ExtElementFactoryProvider.class
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/ExtElementFactoryProvider.class
+END
+InputExt.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/InputExt.class
+END
+ExtVisitor.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/ExtVisitor.class
+END
+PortExt$PortExtImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/MySourceCodes/!svn/ver/99/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/PortExt$PortExtImpl.class
+END
+OutputExt.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/OutputExt.class
+END
+OperationExt.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/OperationExt.class
+END
+ExtComponent.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/ExtComponent.class
+END
+ExtAttribute.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/MySourceCodes/!svn/ver/99/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/ExtAttribute.class
+END
+ExtElementFactoryProvider$BindingExtFactory.class
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/ExtElementFactoryProvider$BindingExtFactory.class
+END
+ExtElementFactoryProvider$FaultExtFactory.class
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/ExtElementFactoryProvider$FaultExtFactory.class
+END
+BindingExt.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/BindingExt.class
+END
+FaultExt.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/FaultExt.class
+END
+ExtConstants.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/MySourceCodes/!svn/ver/99/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/ExtConstants.class
+END
+BindingExt$BindingExtImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/BindingExt$BindingExtImpl.class
+END
+FaultExt$FaultExtImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/FaultExt$FaultExtImpl.class
+END
+ExtElementFactoryProvider$PortExtFactory.class
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/ExtElementFactoryProvider$PortExtFactory.class
+END
+PortExt.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/MySourceCodes/!svn/ver/99/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/PortExt.class
+END
+InputExt$InputExtImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/InputExt$InputExtImpl.class
+END
+OperationExt$OperationExtImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/OperationExt$OperationExtImpl.class
+END
+OutputExt$OutputExtImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/OutputExt$OutputExtImpl.class
+END
+ExtElementFactoryProvider$InputExtFactory.class
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/b2bbc/model/ExtElementFactoryProvider$InputExtFactory.class
+END

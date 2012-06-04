@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/META-INF/services
+END
+org.netbeans.modules.xml.wsdl.bindingsupport.spi.ExtensibilityElementTemplateProvider
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/META-INF/services/org.netbeans.modules.xml.wsdl.bindingsupport.spi.ExtensibilityElementTemplateProvider
+END
+org.netbeans.modules.xml.wsdl.model.spi.ElementFactory
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/META-INF/services/org.netbeans.modules.xml.wsdl.model.spi.ElementFactory
+END
+org.netbeans.modules.xml.xam.spi.Validator
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/META-INF/services/org.netbeans.modules.xml.xam.spi.Validator
+END
+org.netbeans.modules.xml.wsdl.validator.spi.ValidatorSchemaFactory
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/svn/MySourceCodes/!svn/ver/95/Projects/OrangeProjects/B2B-BC/deploy-plugin/build/classes/META-INF/services/org.netbeans.modules.xml.wsdl.validator.spi.ValidatorSchemaFactory
+END
